@@ -12,6 +12,7 @@ import Profile from './components/pages/profile.jsx';
 import Feeds from './components/pages/feeds.jsx';
 import Networks from './components/pages/networks.jsx';
 import ConnectionReqs from './components/pages/connectionReqs.jsx';
+import ChangePassword from './components/pages/changePassword.jsx';
 
 function App() {
   const dispatch = useDispatch();
@@ -57,6 +58,7 @@ function App() {
           <Route path='/requests' element={<ConnectionReqs/>} />
           <Route path='/profile' element={<Profile/>} />
           <Route path='/signup' element={<Signup/>} />
+          <Route path='/changePassword' element={<ChangePassword/>}/>
           <Route path='/*' element={isAuthorizedUser?<Navigate to="/feed"/>:<Navigate to="/login"/>} />
         </Route>
       </Routes>
