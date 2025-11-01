@@ -6,7 +6,15 @@ const connectionReqsSlice = createSlice({
     reducers:{
         allConnectionReqs:(state,action)=>action.payload,
         removeConnectionReq:(state, action)=>{
-            return state.filter((connectionReq)=> connectionReq._id != action.payload)
+            const index = state.findIndex((connectionReq)=> connectionReq._id != action.payload);
+            let newState = [...state];
+            if(index!=-1){
+                newState = [
+                    ...state.slice(0,index),
+                    ...state.slice(index+1)
+                ]
+            }
+            return newState
         }
     }
 })
