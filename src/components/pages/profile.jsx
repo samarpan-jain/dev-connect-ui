@@ -77,6 +77,20 @@ const Profile = () => {
                 });
             }
         }
+        else if(field=='about'){
+            const about = e.target.value.trim();
+            if (!about || about.length < 100 || about.length > 300) {
+                setFormErrors((prevErrors) => ({
+                    ...prevErrors,
+                    about: 'Enter your vision with minLength 100 and maxLength 300'
+                }));
+            } else {
+                setFormErrors((prevErrors) => {
+                    const { about, ...otherErrors } = prevErrors;
+                    return otherErrors;
+                });
+            }
+        }
     }
 
     const handleUpdateProfile = async()=>{
@@ -127,7 +141,7 @@ const Profile = () => {
     }
 
     return profileData && (<div className="flex flex-wrap justify-center gap-10 mt-10 mb-10">
-        <div className="card bg-base-100 w-96 shadow-sm">
+        <div className="card bg-gray-100 w-96 shadow-sm">
             <div className="card-body items-center text-center">
                 <h2 className="card-title font-bold text-2xl">Your Profile</h2>
 
@@ -158,8 +172,9 @@ const Profile = () => {
                     formErrors={formErrors} field="photoUrl" />
 
                 <div className="fieldset pt-2 mx-auto w-[80%]">
-                    <legend className="fieldset-legend text-left">About You</legend>
+                    <legend className="fieldset-legend text-left">Your Vision</legend>
                     <textarea className="textarea h-24 w-full border border-gray-300 rounded-md p-2" placeholder="Tell us about yourself." value={profileData.about} onChange={(e) => handleProfileData(e, 'about')}></textarea>
+                    {formErrors && formErrors["about"] && <p className="text-red-500">{formErrors["about"]}</p>}
                 </div>
             </div>
             <div className="card-actions w-full pb-4 pt-2 px-4">

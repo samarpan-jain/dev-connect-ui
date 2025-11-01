@@ -1,7 +1,7 @@
 const ProfileCard = ({ showCardButtons = true, userData }) => {
 
     return (
-        userData && <div className="card bg-base-100 w-96 shadow-sm">
+        userData && <div className="card bg-gray-100 w-96 shadow-sm">
             <figure className="flex w-full md:h-1/2 lg:h-auto lg:w-[80%] m-auto pt-6 px-4">
                 <img className="rounded-md"
                     src={userData.photoUrl ? userData.photoUrl : "src/assets/profileImg.jpg"}
