@@ -85,8 +85,7 @@ function Login() {
             required={true} formErrors={errors} field="email" />
 
             <InputField legend="Password" IconComponent={PasswordIcon} type="password" placeholder={"Enter the password here"}
-            value={password} handleChange={(e) => handlePassword(e)} minLength="8"
-            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+            value={password} handleChange={(e) => handlePassword(e)}
             required={true} formErrors={errors} field="password" title="Must be more than 8 characters, including number, lowercase letter, uppercase letter" />
 
             <div className="card-actions mt-4 justify-center gap-4">

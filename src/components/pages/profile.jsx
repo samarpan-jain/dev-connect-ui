@@ -145,8 +145,8 @@ const Profile = () => {
             <div className="card-body items-center text-center">
                 <h2 className="card-title font-bold text-2xl">Your Profile</h2>
 
-                <InputField legend="Name" IconComponent={UserIcon} maxLength="30" minLength="3"
-                    pattern="^[a-zA-Z]+[a-zA-Z\s]*$" value={profileData.name} handleChange={(e) => handleProfileData(e, 'name')}
+                <InputField legend="Name" IconComponent={UserIcon}
+                    value={profileData.name} handleChange={(e) => handleProfileData(e, 'name')}
                     required={true} formErrors={formErrors} field="name" />
 
                 <InputField legend="Email Id" IconComponent={EmailIcon} type="email" placeholder={"mail@gmail.com"}
@@ -161,13 +161,12 @@ const Profile = () => {
                     </div>
                 </div>
 
-                <InputField legend="Age"  pattern="^(?:1[8-9]|[2-9][0-9]|100)$"
+                <InputField legend="Age"
                     value={profileData.age} onChange={(e) => handleProfileData(e, 'age')}
                     formErrors={formErrors} field="age" />
 
                 <InputField legend="Image Link" IconComponent={LinkIcon} type="url" placeholder={"https://image.com"}
                     value={profileData.photoUrl} handleChange={(e) => handleProfileData(e, 'photoUrl')}
-                    pattern="^(https://)([a-zA-Z0-9]([a-zA-Z0-9\-].*[a-zA-Z0-9])?\.)+[a-zA-Z].*$"
                     title="Must be valid URL"
                     formErrors={formErrors} field="photoUrl" />
 

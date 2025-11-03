@@ -1,12 +1,14 @@
 
-const InputField = ({legend, type, placeholder, IconComponent, value, handleChange, required, disabled=false, formErrors, field, ...props}) => {
+const InputField = ({legend, type="text", placeholder, IconComponent, value, handleChange, required, disabled=false, formErrors, field, ...props}) => {
   return (
     <div className="fieldset py-2 mx-auto w-[80%]">
         <legend className="fieldset-legend text-left">{legend}</legend>
-        <label className="input validator w-full border border-gray-300 rounded-md">
+        <label className="input w-full border border-gray-300 rounded-md">
             {IconComponent && <IconComponent />}
             <input
-                type={type || "text"}
+                autoComplete="off"
+                name={field}
+                type={type}
                 placeholder={placeholder || `Enter your ${legend.toLowerCase()} here`}
                 value={value}
                 onChange={(e) => handleChange(e)}
@@ -15,7 +17,7 @@ const InputField = ({legend, type, placeholder, IconComponent, value, handleChan
                 {...props}
             />
         </label>
-        {formErrors && formErrors[field] && <p className="validator-hint hidden">{formErrors[field]}</p>}
+        {formErrors && formErrors[field] && <p className="text-red-500">{formErrors[field]}</p>}
     </div>
   )
 }
