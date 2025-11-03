@@ -9,7 +9,7 @@ const UsersList = ({ showReviewBtns = false, data, infoKey, uniqueKey="_id", han
 
             <li className="list-row bg-white m-4 mt-2">
                 {(!data || data.length == 0) && <h4 className="text-center font-semibold text-slate-600 columns-6xl">
-                    No data found. Wait for sometime till then update and make your profile strong.
+                    No data found. Wait for sometime till then update your profile and make it stronger.
                 </h4>
                 }
                 {data && data.length > 0 && data.map((record)=>{

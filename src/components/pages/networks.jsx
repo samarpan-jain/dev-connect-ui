@@ -30,10 +30,9 @@ const Networks = () => {
   return (
     <>
       <h1 className="pb-4 text-center columns-6xl text-2xl font-semibold">Explore your strong network</h1>
-      <div className="w-[60%] mx-auto">
+      <div className="w-[90%] sm:w-[60%] mx-auto">
         {connections && <UsersList showReviewBtns={false} data={connections}/>}
       </div>
-      <ToastContainer />
     </>
   )
 }

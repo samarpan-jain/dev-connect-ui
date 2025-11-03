@@ -43,10 +43,9 @@ const ConnectionReqs = () => {
   return (
     <>
       <h1 className="pb-4 text-center columns-6xl text-2xl font-semibold">Review requests to build a strong network</h1>
-      <div className="w-[70%] mx-auto">
+      <div className="w-[90%] sm:w-[70%] mx-auto">
         {connectionReqs && <UsersList showReviewBtns={true} data={connectionReqs} infoKey={"fromUserDetails"} handleConnectionReview={handleConnectionReview}/>}
       </div>
-      <ToastContainer/>
     </>
   )
 }

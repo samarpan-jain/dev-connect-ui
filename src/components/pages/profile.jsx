@@ -185,7 +185,9 @@ const Profile = () => {
                 <button className="btn btn-primary bg-red-500 text-white w-full" onClick={handleRemoveAccount}>Remove Account</button>
             </div>
         </div>
-        <ProfileCard showCardButtons={false} userData={{...profileData}} />
+        <div className='w-96'>
+            <ProfileCard showCardButtons={false} userData={{...profileData}} />
+        </div>
         <ToastContainer/>
     </div>)
 

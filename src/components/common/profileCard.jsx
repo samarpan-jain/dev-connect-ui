@@ -1,7 +1,7 @@
-const ProfileCard = ({ showCardButtons = true, userData }) => {
+const ProfileCard = ({ userData }) => {
 
     return (
-        userData && <div className="card bg-gray-100 w-96 shadow-sm">
+        userData && <div className="card bg-gray-100 w-[100%] shadow-sm">
             <figure className="flex w-full md:h-1/2 lg:h-auto lg:w-[80%] m-auto pt-6 px-4">
                 <img className="rounded-md"
                     src={userData.photoUrl ? userData.photoUrl : "src/assets/profileImg.jpg"}
@@ -23,10 +23,6 @@ const ProfileCard = ({ showCardButtons = true, userData }) => {
                         )}
                     </div>}
             </div>
-            {showCardButtons && <div className="flex justify-center pb-6 pt-2 px-4 gap-4">
-                <button className="btn btn-primary bg-blue-500 p-4 text-white w-[40%] font-semibold">Connect</button>
-                <button className="btn btn-secondary bg-gray-300 p-4 text-black w-[40%] font-semibold">Ignore</button>
-            </div>}
         </div>
     );
 }
