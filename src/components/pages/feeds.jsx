@@ -6,7 +6,7 @@ import { setFeeds, removeFeed } from "../../store/slices/feedSlice"
 import ProfileCard from "../common/profileCard"
 import { BsSendPlus } from "react-icons/bs";
 import { TbSendOff } from "react-icons/tb";
-import { toast } from "react-toastify"
+import { toast, ToastContainer } from "react-toastify"
 
 const Feeds = () => {
     const [isDataFetched, setIsDataFetched] = useState(false);
@@ -59,18 +59,22 @@ const Feeds = () => {
         <div>
             <h1 className="pb-4 text-center columns-6xl text-2xl font-semibold">Build your networks to achieve your vision</h1>
             <div className="carousel w-full py-4">
-                <div className="carousel-item relative w-full flex flex-col sm:flex-row gap-8 items-center justify-center">
-                    <button className="btn btn-circle w-20 h-20 p-4 bg-slate-100" title="Ignore Profile" onClick={()=>handleSendConnectionReq("ignored", allFeeds[0]._id)}>
+                <div className="carousel-item relative w-full flex flex-wrap sm:flex-row gap-8 items-center justify-center">
+                    <button className="btn btn-circle w-20 h-20 p-4 hidden lg:flex bg-slate-100" title="Ignore Profile" onClick={()=>handleSendConnectionReq("ignored", allFeeds[0]._id)}>
                         <TbSendOff className="w-8 h-8" />
                     </button>
                     <div className="w-[95%] sm:w-[30%] overflow-x-auto">
                         <ProfileCard userData={{...allFeeds[0]}} />
                     </div>
+                    <button className="btn btn-circle w-20 h-20 p-4 lg:hidden bg-slate-100" title="Ignore Profile" onClick={()=>handleSendConnectionReq("ignored", allFeeds[0]._id)}>
+                        <TbSendOff className="w-8 h-8" />
+                    </button>
                     <button className="btn btn-circle w-20 h-20 p-4 bg-slate-100" title="Send Request" onClick={()=>handleSendConnectionReq("interested", allFeeds[0]._id)}>
                         <BsSendPlus className="w-8 h-8" />
                     </button>
                 </div>
             </div>
+            <ToastContainer/>
         </div>
     )
 }

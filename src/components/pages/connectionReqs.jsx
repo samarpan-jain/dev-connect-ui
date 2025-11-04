@@ -46,6 +46,7 @@ const ConnectionReqs = () => {
       <div className="w-[90%] sm:w-[70%] mx-auto">
         {connectionReqs && <UsersList showReviewBtns={true} data={connectionReqs} infoKey={"fromUserDetails"} handleConnectionReview={handleConnectionReview}/>}
       </div>
+      <ToastContainer/>
     </>
   )
 }

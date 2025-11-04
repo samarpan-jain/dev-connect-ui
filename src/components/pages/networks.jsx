@@ -33,6 +33,7 @@ const Networks = () => {
       <div className="w-[90%] sm:w-[60%] mx-auto">
         {connections && <UsersList showReviewBtns={false} data={connections}/>}
       </div>
+      <ToastContainer/>
     </>
   )
 }
