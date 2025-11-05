@@ -4,17 +4,21 @@ import { API_BASE_URL } from "../../utils/constants"
 import { useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { allConnectionReqs, removeConnectionReq } from "../../store/slices/connectionReqsSlice"
+import { incrementConnectionCount } from "../../store/slices/allConnectionsSlice"
 import { toast, ToastContainer } from "react-toastify"
 
 const ConnectionReqs = () => {
   const loggedInUser = useSelector((state)=>state.authUser);
-  const connectionReqs = useSelector((state)=>state.connectionReqs)
+  const connectionReqs = useSelector((state)=>state.connectionReqs.data)
   const dispatch = useDispatch();
 
   const handleConnectionReview = async(status, connId)=>{
     try{
       const response = await axios.post(API_BASE_URL+`connection-requests/review/${status}/${connId}`,{},{withCredentials:true});
       dispatch(removeConnectionReq(connId));
+      if(status=='accepted'){
+        dispatch(incrementConnectionCount());
+      }
       toast.success(response.data.message)
     }
     catch(err){

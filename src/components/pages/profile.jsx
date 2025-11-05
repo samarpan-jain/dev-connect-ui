@@ -63,9 +63,8 @@ const Profile = () => {
             }
         }
         else if (field === 'photoUrl') {
-            const urlVal = e.target.value.trim();
-            console.log(urlVal.slice(0,5)!='https', !isURL(urlVal), urlVal.length>0)
-            if (urlVal.length==0 || urlVal.slice(0,5)!='https'|| !isURL(urlVal)) {
+            const urlVal = e.target.value?.trim();
+            if (!urlVal || urlVal.length==0 || urlVal.slice(0,5)!='https'|| !isURL(urlVal)) {
                 setFormErrors((prevErrors) => ({
                     ...prevErrors,
                     photoUrl: 'Please enter a valid photoUrl.'
@@ -109,7 +108,7 @@ const Profile = () => {
     }
 
     const handleAddSkills = ()=>{
-        const skill = prompt("Enter a new skill").trim();
+        const skill = prompt("Enter a new skill")?.trim();
         if(skill && skill.length>0){
             setProfileData((prevState) => ({
                 ...prevState,

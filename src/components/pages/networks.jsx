@@ -8,7 +8,7 @@ import { API_BASE_URL } from "../../utils/constants";
 
 const Networks = () => {
   const loggedInUser = useSelector((state) => state.authUser);
-  const connections = useSelector((state) => state.allConnectionsList)
+  const connections = useSelector((state) => state.allConnectionsList.data)
   const dispatch = useDispatch();
 
   const fetchAllConnections = async () => {

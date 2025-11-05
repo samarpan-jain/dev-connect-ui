@@ -2,22 +2,36 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const connectionReqsSlice = createSlice({
     name: "connectionReqs",
-    initialState: [],
+    initialState: {
+        connectionReqCount:0,
+        data:[]
+    },
     reducers:{
-        allConnectionReqs:(state,action)=>action.payload,
+        allConnectionReqs:(state,action)=>(
+            {
+                ...state,
+                connectionReqCount: action.payload.length,
+                data:action.payload,
+            }
+        ),
         removeConnectionReq:(state, action)=>{
-            const index = state.findIndex((connectionReq)=> connectionReq.id != action.payload);
-            let newState = [...state];
+            const index = state.data.findIndex((connectionReq)=> connectionReq._id == action.payload);
+            let newState = [...state.data];
             if(index!=-1){
                 newState = [
-                    ...state.slice(0,index),
-                    ...state.slice(index+1)
+                    ...state.data.slice(0,index),
+                    ...state.data.slice(index+1)
                 ]
             }
-            return newState
-        }
+            return {data:newState, connectionReqCount: state.connectionReqCount-1}
+        },
+        setConnectionReqCount:(state, action)=> (
+            {...state, 
+                connectionReqCount:action.payload
+            }
+        )
     }
 })
 
-export const {allConnectionReqs, removeConnectionReq} = connectionReqsSlice.actions;
+export const {allConnectionReqs, removeConnectionReq, setConnectionReqCount} = connectionReqsSlice.actions;
 export default connectionReqsSlice.reducer;

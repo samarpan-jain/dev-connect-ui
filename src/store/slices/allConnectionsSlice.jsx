@@ -2,11 +2,24 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const allConnectionsListSlice = createSlice({
     name:"allConnectionsList",
-    initialState: [],
+    initialState: {
+        connectionCount:0,
+        data: []
+    },
     reducers:{
-        setAllConnectionList:(state, action)=>action.payload,
+        setAllConnectionList:(state, action)=>(
+            {...state, data:action.payload}
+        ),
+        setConnectionCount:(state, action)=> (
+            {...state, 
+                connectionCount:action.payload
+            }
+        ),
+        incrementConnectionCount:(state, action)=>({
+            ...state, connectionCount: state.connectionCount+1
+        })
     }
 })
 
-export const {setAllConnectionList} = allConnectionsListSlice.actions;
+export const {setAllConnectionList, setConnectionCount, incrementConnectionCount} = allConnectionsListSlice.actions;
 export default allConnectionsListSlice.reducer;
