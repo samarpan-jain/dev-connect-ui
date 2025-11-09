@@ -52,7 +52,7 @@ const NavBar = () => {
                         <li className="pt-2 font-semibold text-blue-900">
                             <NavLink to={'/networks'} title="Networks" className={({ isActive }) => (isActive ? 'active-nav-link' : '') + ' text-2xl'}>
                                 <div className="indicator">
-                                    <span className="indicator-item badge badge-soft badge-primary badge-xs">{connectionCount && connectionCount<100 ? connectionCount : '99+'}</span>
+                                    <span className="indicator-item badge badge-soft badge-primary badge-xs">{(connectionCount==0 || connectionCount<100)? connectionCount:"99+"}</span>
                                     <RiUserCommunityLine />
                                 </div>
                             </NavLink>
@@ -61,7 +61,7 @@ const NavBar = () => {
                         <li className="pt-2 font-semibold text-blue-900">
                             <NavLink to={'/requests'} title="Requests" className={({ isActive }) => (isActive ? 'active-nav-link' : '')}>
                                 <div className="indicator">
-                                    <span className="indicator-item badge badge-soft badge-secondary badge-xs">{connectionReqCount && connectionReqCount<100 ? connectionReqCount : '99+'}</span>
+                                    <span className="indicator-item badge badge-soft badge-secondary badge-xs">{(connectionReqCount==0 || connectionReqCount<100)? connectionReqCount:"99+"}</span>
                                     <ConnectionReqIcon />
                                 </div>
                             </NavLink>
